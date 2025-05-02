@@ -1,122 +1,191 @@
-import { useState } from "react";
-import React from "react";
-import { motion } from "framer-motion";
-import { FaReact, FaAngular, FaLaravel, FaNodeJs } from "react-icons/fa";
-import { FiArrowRight } from "react-icons/fi";
-import { SiFlutter, SiAndroid, SiApple } from "react-icons/si";
-import { TbBrandKotlin } from "react-icons/tb";
+import React, { useState } from 'react';
+
+import w0 from '../../public/images/w-0.webp';
+import w1 from '../../public/images/w-1.svg';
+import w2 from '../../public/images/w-2.svg';
+import w3 from '../../public/images/w-3.svg';
+import w4 from '../../public/images/w-4.svg';
+import m0 from '../../public/images/m-0.webp';
+import m1 from '../../public/images/m-1.svg';
+import m2 from '../../public/images/m-2.svg';
+import m3 from '../../public/images/m-3.svg';
+import m4 from '../../public/images/m-4.svg';
+import g0 from '../../public/images/g-0.webp';
+import g1 from '../../public/images/g-1.svg';
+import g2 from '../../public/images/g-2.svg';
+import g3 from '../../public/images/g-3.svg';
+import g4 from '../../public/images/g-4.svg';
+import u0 from '../../public/images/u-0.webp';
+import u1 from '../../public/images/u-1.svg';
+import u2 from '../../public/images/u-2.svg';
+import u3 from '../../public/images/u-3.svg';
+import u4 from '../../public/images/u-4.svg';
+import q0 from '../../public/images/q-0.webp';
+import q1 from '../../public/images/q-1.svg';
+import q2 from '../../public/images/q-2.webp';
+import q3 from '../../public/images/q-3.svg';
+import q4 from '../../public/images/q-4.webp';
+import d0 from '../../public/images/d-0.webp';
+import d1 from '../../public/images/d-1.svg';
+import d2 from '../../public/images/d-2.svg';
+import d3 from '../../public/images/d-3.svg';
+import d4 from '../../public/images/d-4.svg'
+
 
 const services = [
   {
+    icon: w0,
+    hoverIcon: w0,
     title: "Web Development",
-    icon: "/web-icon.png",
-    details:
-      "Transform your business concepts with our web development services, crafting innovative and next-generation websites.",
+    description: "Transform your business concepts with our web development services, crafting innovative and next-generation websites.",
     technologies: [
-      { icon: FaReact, name: "React JS", color: "#61DAFB" },
-      { icon: FaAngular, name: "Angular", color: "#DD0031" },
-      { icon: FaLaravel, name: "Laravel", color: "#FF2D20" },
-      { icon: FaNodeJs, name: "Node JS", color: "#339933" },
+      { name: "React JS", icon: w1 },
+      { name: "Angular", icon: w2 },
+      { name: "Laravel", icon: w3 },
+      { name: "Node JS", icon: w4 }
     ],
+    href: "/web-development-company"
   },
   {
+    icon: m0,
+    hoverIcon: m0,
     title: "Mobile App Development",
-    icon: "/mobile-icon.png",
-    details: "Building robust and scalable mobile applications tailored to your business needs.",
+    description: "Drive digital evolution by creating scalable, compelling, and feature-rich mobile applications.",
     technologies: [
-      { icon: SiFlutter, name: "Flutter", color: "#02569B" },
-      { icon: SiAndroid, name: "Android", color: "#3DDC84" },
-      { icon: SiApple, name: "iOS", color: "#A2AAAD" },
-      { icon: TbBrandKotlin, name: "Kotlin", color: "#7F52FF" },
+      { name: "React Native", icon: m1 },
+      { name: "Flutter", icon: m2 },
+      { name: "Swift", icon: m3 },
+      { name: "Kotlin", icon: m4 }
     ],
+    href: "/mobile-app-development"
   },
   {
+    icon: g0,
+    title: "Graphics Design",
+    hoverIcon: g0,
+    description: "Through our creatively inspired and strategically guided solutions, we assist your brand in establishing emotional connections with consumers.",
+    technologies: [
+      { name: "React JS", icon: g1 },
+      { name: "Angular", icon: g2 },
+      { name: "Laravel", icon: g3 },
+      { name: "Node JS", icon: g4 }
+    ],
+    href: "/web-development-company"
+  },
+  {
+    icon: u0,
     title: "UI/UX Design",
-    icon: "/design-icon.png",
-    details: "Creating intuitive and engaging user interfaces with a focus on user experience and visual appeal.",
+    hoverIcon: u0,
+    description: "We specialise in crafting professional and creative websites. Our designers create websites that are both search engine and user-friendly.",
     technologies: [
-      { icon: FaReact, name: "Figma", color: "#F24E1E" },
-      { icon: FaReact, name: "Adobe XD", color: "#FF61F6" },
-      { icon: FaReact, name: "Sketch", color: "#F7B500" },
+      { name: "React JS", icon: u1 },
+      { name: "Angular", icon: u2 },
+      { name: "Laravel", icon: u3 },
+      { name: "Node JS", icon: u4 }
     ],
+    href: "/web-development-company"
   },
   {
-    title: "Digital Marketing",
-    icon: "/marketing-icon.png",
-    details: "Enhancing your online presence and driving targeted traffic to your digital platforms.",
+    icon: q0,
+    title: "Quality Assurance (QA)",
+    hoverIcon: q0,
+    description: "Explore our user-friendly and seamless website and app development services, designed for easy management.",
     technologies: [
-      { icon: FaReact, name: "SEO", color: "#47c1bf" },
-      { icon: FaReact, name: "SEM", color: "#f06543" },
-      { icon: FaReact, name: "SMM", color: "#5851db" },
+      { name: "React JS", icon: q1 },
+      { name: "Angular", icon: q2 },
+      { name: "Laravel", icon: q3 },
+      { name: "Node JS", icon: q4 }
     ],
+    href: "/web-development-company"
   },
+  {
+    icon: d0,
+    title: "Digital Marketing",
+    hoverIcon: d0,
+    description: "Leverage our digital marketing services to achieve outstanding sales conversions and maximise ROI.",
+    technologies: [
+      { name: "React JS", icon: d1 },
+      { name: "Angular", icon: d2 },
+      { name: "Laravel", icon: d3 },
+      { name: "Node JS", icon: d4 }
+    ],
+    href: "/web-development-company"
+  }
 ];
 
-const ServicesSection = () => {
+const ServiceCard = ({ service }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="w-full bg-[#01132E] py-16">
-      <div className="max-w-[90%] mx-auto">
-        <h1 className="text-4xl font-bold text-white text-left mb-10">Services We Offer</h1>
-        
-        <div className="space-y-6">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
-          ))}
+    <li 
+      className={`flex flex-col md:flex-row items-center px-3 py-5 md:p-8 cursor-pointer rounded-[25px] relative border border-white/25 transition-all duration-500 
+      ${isHovered ? 'bg-gradient-to-br from-[#26426B] to-[#030b1b] border-white md:p-16 p-4' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <a href={service.href} aria-label={service.title} className="flex-1 flex flex-col md:flex-row items-start md:items-center w-full]" style={{textDecoration:'none'}}>
+        <div className="h-12 w-12 mr-5 md:w-14 md:h-14 flex-shrink-0 mb-3 md:mb-0">
+          <img
+            src={isHovered ? service.hoverIcon : service.icon}
+            alt={service.title}
+            className="w-full h-full object-contain transition-all duration-500"
+          />
         </div>
+        <div className="md:ml-14 w-full">
+          <h3 className="text-[18px] md:font-medium text-white">{service.title}</h3>
+          <p className={`text-[14px] md:text-[16px] max-w-md transition-opacity text-white duration-500 ${isHovered ? 'opacity-100 mt-2' : 'opacity-0 h-0 overflow-hidden'}`}>
+            {service.description}
+          </p>
+        </div>
+      </a>
+
+      <div className={`flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mt-4 md:mt-0 transition-all duration-500 w-full md:w-auto ${isHovered ? 'opacity-100 flex' : 'opacity-0 hidden'}`}>
+        {service.technologies.map((tech, index) => (
+          <div key={index} className="flex flex-col items-center justify-center px-2 md:px-4 text-xs md:text-base text-center">
+            <div className="w-8 h-8 md:w-12 md:h-12">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="mt-1 md:mt-2">{tech.name}</div>
+          </div>
+        ))}
       </div>
-    </div>
+    </li>
   );
 };
 
-const ServiceCard = ({ service }) => {
+const ServicesSection = () => {
   return (
-    <motion.div 
-      className="group relative w-full p-6 rounded-xl bg-[#01132E] border border-gray-700 overflow-hidden transition-all duration-300 hover:bg-gradient-to-r from-[#01132E] to-[#01132E]"
-      whileHover={{ 
-        transition: { duration: 0.3 }
-      }}
-    >
-      {/* Default (Before Hover) Content */}
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 flex items-center justify-center">
-          <img 
-            src={service.icon} 
-            alt={service.title}
-            className="object-contain w-full h-full"
-          />
-        </div>
-        <h2 className="text-2xl font-semibold text-white">{service.title}</h2>
-      </div>
-
-      {/* Extended (After Hover) Content */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 mt-4 h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300 overflow-hidden">
-        {/* Description */}
-        <div className="md:w-1/2">
-          <p className="text-white text-lg max-w-md">
-            {service.details}
-          </p>
-        </div>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-x-12 gap-y-8 items-center justify-center md:justify-end mt-4 md:mt-0">
-          {service.technologies.map((tech, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <tech.icon className="text-4xl" style={{ color: tech.color }} />
-              <p className="text-white mt-2 text-sm">{tech.name}</p>
-            </div>
-          ))}
-          
-          <motion.div 
-            whileHover={{ scale: 1.1 }}
-            className="flex items-center justify-center ml-6"
-          >
-            <div className="w-12 h-12 rounded-full bg-[#FF5722] flex items-center justify-center cursor-pointer">
-              <FiArrowRight className="text-white text-xl" />
-            </div>
-          </motion.div>
+    <section className="flex flex-col items-center px-3 py-5 md:px-30 md:py-16 bg-[#01132e] text-white">
+      <div className="container mx-auto px-4 sm:px-10 lg:px-15">
+        <h2 className="pb-5 md:p-0 text-8xl lg:text-7xl leading-tight md:leading-[104px] text-shadow-custom
+        " style={{
+            textShadow: `rgb(239, 237, 227) -1px -1px 1px, 
+          rgb(1, 19, 46) 0px 1px 0px, 
+          rgb(1, 19, 46) 0px 2px 0px, 
+          rgb(1, 19, 46) 0px 3px 0px, 
+          rgb(77, 89, 108) 0px 4px 0px, 
+          rgba(0, 0, 0, 0.9) 0px 0px 0px, 
+          rgba(0, 0, 0, 0.3) 0px 0px 0px, 
+          rgba(0, 0, 0, 0.5) 0px 0px 0px, 
+          rgba(0, 0, 0, 0.9) 0px 0px 0px` }}>
+          Services We Offer
+        </h2>
+        <p className="text-[12px] md:text-[16px] text-left">
+          We offer a full range of web app development services that make things better for enterprises and companies we work with. Our team of dedicated developers fulfills your diverse business requirements through a number of services.
+        </p>
+        <div className="mt-10 md:mt-20 w-full">
+          <ul className="p-0 list-none flex flex-col gap-10">
+            {services.map((service, index) => (
+              <ServiceCard key={index} service={service} />
+            ))}
+          </ul>
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 };
 

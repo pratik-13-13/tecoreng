@@ -1,5 +1,9 @@
 import React from 'react';
 
+//import imageforhero from '../assets/Image/infinite.c057ea68.webp';
+import '../Css/Hero.css';
+import ball from '../../public/images/ball.webp'
+
 const Herosection = () => {
     return (
         <div className="relative  bg-[#112542] text-white flex items-center">
@@ -35,6 +39,9 @@ const Herosection = () => {
                         alt="Infinity Logo"
                         className="w-full h-auto object-contain rounded-lg transition-transform duration-300"
                     />
+                    <img src={ball}
+                     alt="floting ball"
+                     className='absolute w-8 h-8 sm:w-11 sm:h-9 floating-ball skew-x-' />
                 </div>
             </div>
         </div>

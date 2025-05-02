@@ -1,59 +1,165 @@
-import { useRef } from 'react';
-import React from 'react';
-import devimg1 from "/images/p-1.webp";
-import devimg2 from "/images/p-2.webp";
-import devimg3 from "/images/p-3.webp";
-import devimg4 from "/images/p-4.webp";
-import devimg5 from "/images/p-5.webp";
-import devimg6 from "/images/p-6.webp";
-import devimg7 from "/images/p-7.webp";
+import React, { useEffect, useState, useRef } from 'react';
+import p1 from '../../public/images/p-1.webp'
+import p2 from '../../public/images/p-2.webp'
+import p3 from '../../public/images/p-3.webp'
+import p4 from '../../public/images/p-4.webp'
+import p5 from '../../public/images/p-5.webp'
+import p6 from '../../public/images/p-6.webp'
+import p7 from '../../public/images/p-7.webp'
+import opening from '../../public/images/ball-opening.svg';
+import exit from '../../public/images/ball-exit.webp'
+import ball from '../../public/images/ball-3d.svg';
+
+
+import '../Css/Development.css';
+import { div } from 'framer-motion/client';
 
 const DevelopmentProcess = () => {
-  const containerRef = useRef(null);
+  const [ballStyle, setBallStyle] = useState({
+    transform: 'translate3d(27.622px, 0.98716px, 0px) rotate(2.37289deg)',
+    opacity: 0,
+  });
+  const containerRef = useRef(null); // To refer to the container
+
   const steps = [
-    { title: "Research and Analysis", description: "Idea, Consultation, Research, Goal Definition, & Requirements Gathering", imageSrc: devimg1, position: "left" },
-    { title: "Design", description: "System Architecture Design, Wireframing, UI/UX Designing, & Prototyping", imageSrc: devimg2, position: "right" },
-    { title: "Development", description: "Functional Implementation, Software Coding & Optimization", imageSrc: devimg3, position: "left" },
-    { title: "Testing", description: "Quality Assurance, Troubleshooting, & Testing", imageSrc: devimg4, position: "right" },
-    { title: "Deployment", description: "Launch, Beta Live, & Live", imageSrc: devimg5, position: "left" },
-    { title: "Evaluation", description: "Performance Evaluation, & Analytics Implementation", imageSrc: devimg6, position: "right" },
-    { title: "Maintenance", description: "Monitoring, Feedback, Analysis, & Complete Support", imageSrc: devimg7, position: "left" },
+    { title: "Research and Analysis", description: "Idea, Consultation, Research, Goal Definition, & Requirements Gathering", imageSrc: p1, position: "left" },
+    { title: "Design", description: "System Architecture Design, Wireframing, UI/UX Designing, & Prototyping", imageSrc: p2, position: "right" },
+    { title: "Development", description: "Functional Implementation, Software Coding & Optimization", imageSrc: p3, position: "left" },
+    { title: "Testing", description: "Quality Assurance, Troubleshooting, & Testing", imageSrc: p4, position: "right" },
+    { title: "Deployment", description: "Launch, Beta Live, & Live", imageSrc: p5, position: "left" },
+    { title: "Evaluation", description: "Performance Evaluation, & Analytics Implementation", imageSrc: p6, position: "right" },
+    { title: "Maintenance", description: "Monitoring, Feedback, Analysis, & Complete Support", imageSrc: p7, position: "left" },
   ];
 
+  const handleScroll = () => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+    const containerRect = container.getBoundingClientRect();
+    const containerTop = containerRect.top;
+    const containerHeight = containerRect.height;
+    const viewportHeight = window.innerHeight;
+
+    // Calculate progress (0 to 1) based on container's position in viewport
+    let progress = (viewportHeight - containerTop) / (containerHeight + viewportHeight);
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Define control points for the path
+    const path = [
+      { x: 0, y: -50 },           // Start at ballentry (ball image position)
+      { x: 1500, y: 800 },            // Research point
+      { x: -50, y: 900 },             // Design point
+      { x: 1050, y: 1200 },           // Development point
+      { x: -50, y: 1700 },            // Testing point
+      { x: 1200, y: 2000 },           // Deployment point
+      { x: -125, y: 2500 },           // Evaluation point
+      { x: 1050, y: 2600 },           // Maintenance point
+      { x: 1425, y: 3500 }            // End at ballexit (exit point)
+    ];
+
+    // Find current segment
+    const totalSegments = path.length - 1;
+    const currentSegment = Math.min(Math.floor(progress * totalSegments), totalSegments - 1);
+    const segmentProgress = (progress * totalSegments) % 1;
+
+    // Calculate current position
+    const start = path[currentSegment];
+    const end = path[currentSegment + 1];
+
+    // Interpolate position
+    const x = start.x + (end.x - start.x) * segmentProgress;
+    const y = start.y + (end.y - start.y) * segmentProgress;
+
+    // Calculate rotation based on movement direction
+    const rotation = 2.37289 + (Math.sin(progress * Math.PI * 2) * 5);
+
+    // Update ball position and rotation with slower   and added animations
+    setBallStyle({
+      transform: `translate3d(${x}px, ${y}px, 0px) rotate(${rotation}deg)`,
+      opacity: 1,  // Make the ball visible when in motion
+      transition: 'transform 0.4s ease-out', // Smoother transition for position change
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    // Initial position calculation
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div ref={containerRef} className="flex flex-col w-full max-w-7xl mx-auto py-16 min-h-screen overflow-hidden bg-[#01132E] px-4 md:px-8">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center md:text-left mb-12 text-gray-100 tracking-wide drop-shadow-lg">
-        Our Development Process
-      </h1>
+    <div className='bg-[#01132e] '>
+      <div className="  development-container " ref={containerRef} >
+        <h1
+          className="text-white tracking-wide mx-auto pl-10 "
+          style={{
+            textShadow: "rgb(239, 237, 227) -1px -1px 1px, rgb(1, 19, 46) 0px 1px 0px, rgb(1, 19, 46) 0px 2px 0px, rgb(1, 19, 46) 0px 3px 0px, rgb(1, 19, 46) 0px 4px 0px, rgb(1, 19, 46) 0px 5px 0px, rgb(77, 89, 108) 0px 6px 0px, rgba(0, 0, 0, 0.9) 0px 0px 0px, rgba(0, 0, 0, 0.3) 0px 0px 0px, rgba(0, 0, 0, 0.5) 0px 0px 0px, rgba(0, 0, 0, 0.9) 0px 0px 0px"
+          }}
+        >
+          Our Development Process
+        </h1>
+        <br />
 
-      {steps.map((step, index) => {
-        const shouldFlip = [1, 3, 5].includes(index); // 2nd, 4th, and 6th cards
 
-        return (
-          <div 
-            key={index} 
-            className={`flex flex-col md:flex-row items-center mb-12 ${step.position === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-          >
-            <div 
-              className="relative flex flex-col md:flex-row items-center p-6 w-full md:w-[700px] h-auto md:h-[280px] bg-gradient-to-r from-[#26426B] to-[#0017386B] shadow-lg rounded-2xl text-white"
-            >
-              <div 
-                className="flex-none flex justify-center items-center p-4 w-[150px]"
-              >
-                <img 
-                  src={step.imageSrc} 
-                  alt={step.title} 
-                  className={`w-[100px] md:w-[120px] h-[100px] md:h-[120px] object-cover rounded-lg ${shouldFlip ? 'scale-x-[-1]' : ''}`} 
-                />
-              </div>
-              <div className={`flex-1 flex flex-col justify-center text-center md:${step.position === 'left' ? 'text-left' : 'text-right'} mt-4 md:mt-0 px-4`}>  
-                <h2 className="text-xl md:text-2xl font-bold mb-2">{step.title}</h2>
-                <p className="text-md md:text-lg font-light leading-relaxed">{step.description}</p>
-              </div>
+        <div className="svg-container">
+          <img src={opening} alt="Ball Entry" className="ball-entry ml-5 mb-8" />
+          <img
+            src={ball}
+            alt="Ball"
+
+            className="ball"
+            style={ballStyle}
+          />
+        </div>
+
+        {steps.map((step, index) => (
+          <div key={index} className={`development-step ${step.position}`}>
+            <div className="development-box">
+              {step.position === 'left' ? (
+                <>
+                  <div className="image-container">
+                    <img src={step.imageSrc} alt={step.title} className="step-image" />
+                  </div>
+                  <div className="text-container">
+                    <h2>{step.title}</h2>
+                    <p>{step.description}</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="text-container">
+                    <h2>{step.title}</h2>
+                    <p>{step.description}</p>
+                  </div>
+                  <div className="image-container">
+                    <img src={step.imageSrc} alt={step.title} className="step-image" />
+                  </div>
+                </>
+              )}
             </div>
           </div>
-        );
-      })}
+        ))}
+
+        {/* Ball Exit Section */}
+        <div className="diTaJz d-none d-lg-block">
+          <div className="ballExit" style={{
+            position: "absolute", bottom: "20px", right: '140px'
+          }}>
+            <img
+              alt="ball exit"
+              loading="lazy"
+              width="209"
+              height="83"
+              src={exit}
+              className="exitBall"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

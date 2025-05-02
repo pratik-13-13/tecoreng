@@ -1,3 +1,4 @@
+import { style } from 'framer-motion/client';
 import React, { useState } from 'react';
 
 const models = [
@@ -19,7 +20,7 @@ function  Eng_model() {
     const [isHover, setIsHover] = useState(false);
 
     return (
-      <div className='bg-[#01132e]'>
+      <div  className='bg-[#01132e]'>
         <div className="w-full bg-[#01132e] container mx-auto p-4 md:p-6">
             <h2 className="text-3xl text-white md:text-4xl lg:text-5xl text-left font-bold"
                 style={{
@@ -68,7 +69,7 @@ function  Eng_model() {
                             </div>
 
                             <div className="p-4 transition-all duration-200">
-                                <p className="text-white text-xs sm:text-sm md:text-base leading-relaxed group-hover:text-[#151515]">
+                                <p className="text-white text-xs sm:text-sm md:text-base leading-relaxed group-hover:text-black">
                                     {model.description}
                                 </p>
                             </div>

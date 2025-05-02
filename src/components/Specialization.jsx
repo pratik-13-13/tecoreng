@@ -5,29 +5,29 @@ const ThreeCardCarousel = () => {
 
     const cardsData = [
         {
-            image: "/images/mb.png", // Update with actual path
+            image: "/images/mb.png",
             title: "Mobile App Development",
             description: "Tecoreng is the top mobile application development company in India. Our expert team of mobile application developers is capable of creating high-quality mobile apps for multiple platforms like IOS & Android."
         },
         {
-            image: "/images/pc.png", // Update with actual path
+            image: "/images/pc.png",
             title: "Web Development",
             description: "Our web team creates high-quality websites as per custom requirements and helps to make your business digital. Tecoreng web experts to continue growing themself to the latest fair with technology such as Laravel, Angular, Node.Js, and so on."
         },
         {
-            image: "/images/ui.png", // Update with actual path
+            image: "/images/ui.png",
             title: "UI/UX Graphics & Design",
             description: "Tecoreng is the best UI/UX graphics design agency. We have the capacity to build a smooth and high-quality design with our UI/UX team."
         },
         {
-            image: "/images/mk.png", // Update with actual path
+            image: "/images/mk.png",
             title: "Digital Marketing",
-            description: "Technical Core Engineers is a Digital organization that incorporates administrations from making your Brand character through carefully characterizing your thoughts and zeroing in on getting your items and administrations to the consistently developing computerized market subsequently expanding your image’s mindfulness, deals, and wants."
+            description: "Technical Core Engineers is a Digital organization that incorporates administrations from making your Brand identity through carefully characterizing your ideas and zeroing in on getting your items and administrations to the computerized market."
         },
         {
             image: "/images/iot.png",
             title: "Internet Of Things",
-            description: "Web of Things(IoT) application advancement interfaces each and every actual device with the Internet to engage an exchange of data. It will in general be energized through different connection points and devices to make life favorable."
+            description: "Web of Things (IoT) application advancement interfaces every physical device with the Internet to enable an exchange of data."
         }
     ];
 
@@ -57,48 +57,49 @@ const ThreeCardCarousel = () => {
         }
     };
 
-    const getCardClasses = (position) => { 
-          const baseClasses = "absolute transition-all duration-700 ease-in-out transform bg-[#1E2433] rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center  space-y-3 bg-white ";
+    const getCardClasses = (position) => {
+        const baseClasses = "absolute transition-all duration-700 ease-in-out transform bg-[#1E2433] rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center space-y-3 bg-white";
 
         switch (position) {
             case 'center':
-                return `${baseClasses} w-[600px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 scale-100 cursor-default`;
+                return `${baseClasses} w-[90%] sm:w-[500px] md:w-[600px] h-[300px] sm:h-[350px] md:h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 scale-100 cursor-default`;
             case 'left':
-                return `${baseClasses} w-[490px] h-[320px] top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 z-5 scale-75 opacity-30 cursor-pointer`;
+                return `${baseClasses} w-[80%] sm:w-[400px] md:w-[490px] h-[250px] sm:h-[300px] md:h-[320px] top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 z-5 scale-75 opacity-30 cursor-pointer`;
             case 'right':
-                return `${baseClasses} w-[500px] h-[320px] top-1/2 right-[15%] translate-x-1/2 -translate-y-1/2 z-5 scale-75 opacity-30 cursor-pointer`;
+                return `${baseClasses} w-[80%] sm:w-[420px] md:w-[500px] h-[250px] sm:h-[300px] md:h-[320px] top-1/2 right-[15%] translate-x-1/2 -translate-y-1/2 z-5 scale-75 opacity-30 cursor-pointer`;
             default:
                 return 'hidden';
         }
     };
 
     return (
-        <div className=" min-h-screen bg-[#01132E] flex flex-col items-center justify-center relative overflow-hidden px-6 py-12">
+        <div className="min-h-screen bg-[#01132E] flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6 py-12">
             {/* Heading Section */}
-            <div style={{marginLeft:"-25rem"}} className="mb-25">
-            <h2 
-  className=" pb-10 text-white text-6xl font-bold mb-6"
-  style={{
-    fontFamily: "Poppins, sans-serif",fontSize:"50px",
-    textShadow: `
-      rgb(239, 237, 227) -1px -1px 1px,
-      rgb(1, 19, 46) 0px 1px 0px,
-      rgb(1, 19, 46) 0px 2px 0px,
-      rgb(1, 19, 46) 0px 3px 0px,
-      rgb(1, 19, 46) 0px 4px 0px,
-      rgb(1, 19, 46) 0px 5px 0px,
-      rgb(77, 89, 108) 0px 6px 0px,
-      rgba(0, 0, 0, 0.9) 0px 0px 0px,
-      rgba(0, 0, 0, 0.3) 0px 0px 0px,
-      rgba(0, 0, 0, 0.5) 0px 0px 0px,
-      rgba(0, 0, 0, 0.9) 0px 0px 0px
-    `
-  }}
->
-Our Specialization
-</h2>                <p className="text-lg text-white max-w-3xl">
-                    We offer a full range of web app development services that make things better for enterprises and companies we work with. 
-                    Our team of dedicated mobile app developers fulfills your diverse business requirements through a number of services. 
+            <div className="mb-16 w-full max-w-6xl px-4">
+                <h2
+                    className="pb-6 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+                    style={{
+                        fontFamily: "Poppins, sans-serif",
+                        textShadow: `
+                            rgb(239, 237, 227) -1px -1px 1px,
+                            rgb(1, 19, 46) 0px 1px 0px,
+                            rgb(1, 19, 46) 0px 2px 0px,
+                            rgb(1, 19, 46) 0px 3px 0px,
+                            rgb(1, 19, 46) 0px 4px 0px,
+                            rgb(1, 19, 46) 0px 5px 0px,
+                            rgb(77, 89, 108) 0px 6px 0px,
+                            rgba(0, 0, 0, 0.9) 0px 0px 0px,
+                            rgba(0, 0, 0, 0.3) 0px 0px 0px,
+                            rgba(0, 0, 0, 0.5) 0px 0px 0px,
+                            rgba(0, 0, 0, 0.9) 0px 0px 0px
+                        `
+                    }}
+                >
+                    Our Specialization
+                </h2>
+                <p className="text-sm sm:text-base text-white max-w-3xl">
+                    We offer a full range of web app development services that make things better for enterprises and companies we work with.
+                    Our team of dedicated mobile app developers fulfills your diverse business requirements through a number of services.
                     We specialize in the following services:
                 </p>
             </div>
